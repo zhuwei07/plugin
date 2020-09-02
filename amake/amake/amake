@@ -1,0 +1,2 @@
+amakeroot=/usr/local/amake
+make -f $amakeroot/macos/makefile prjfile=$1 amakeroot=$amakeroot

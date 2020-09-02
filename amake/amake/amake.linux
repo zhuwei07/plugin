@@ -1,0 +1,2 @@
+amakeroot=/usr/local/amake
+make -f $amakeroot/linux/makefile.linux prjfile=$1 amakeroot=$amakeroot

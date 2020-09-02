@@ -1,0 +1,12 @@
+mkdir bin
+mkdir include
+mkdir lib
+cp src/lib/pump.h include
+cd src
+cp pump.c.unix pump.c
+cp makefile.unix makefile
+make
+cd lib
+cp makefile.unix makefile
+make
+cd ../..

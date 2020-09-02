@@ -1,0 +1,25 @@
+target:makefile dspdsw vcxproj
+
+copyfile.bat: $(amakeroot)\windows\copyfile.bat.tpl $(prjfile)
+	@pump $@ $(amakeroot)\windows\copyfile.bat.tpl $(prjfile)
+
+project.env: copyfile.bat
+	@echo ^<system prjfile=^"$(prjfile)^"  libs=^"^" cppflags=^"^" ldflags=^"^" arflags=^"^"^> >$@
+	@type $(prjfile) >> $@
+	@echo ^<package^> >> $@
+	@call copyfile.bat $@
+	@echo ^</package^> >> $@
+	@echo ^</system^> >> $@
+	@del copyfile.bat
+
+makefile: $(amakeroot)\windows\makefile.tpl project.env
+	@pump $@ $(amakeroot)\windows\makefile.tpl project.env
+	
+dspdsw: $(amakeroot)\windows\dspdsw.tpl project.env
+	@pump $@ $(amakeroot)\windows\dspdsw.tpl project.env
+	@pump_cut dspdsw
+
+vcxproj: $(amakeroot)\windows\vcxproj.tpl project.env
+	@pump $@ $(amakeroot)\windows\vcxproj.tpl project.env
+	@pump_cut vcxproj
+	@del project.env

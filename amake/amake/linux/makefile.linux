@@ -1,0 +1,18 @@
+target:makefile
+
+copyfile: $(amakeroot)/linux/copyfile.tpl $(prjfile)
+	@pump $@ $(amakeroot)/linux/copyfile.tpl $(prjfile)
+	@chmod +x copyfile
+
+project.env: copyfile
+	@echo \<system prjfile=\"$(prjfile)\"  libs=\"\" cppflags=\"\" ldflags=\"\" arflags=\"\"\> >$@
+	@cat $(prjfile) >> $@
+	@echo \<package\> >> $@
+	@copyfile $@
+	@echo \</package\> >> $@
+	@echo \</system\> >> $@
+	@rm copyfile
+
+makefile: $(amakeroot)/linux/makefile.linux.tpl project.env
+	@pump $@ $(amakeroot)/linux/makefile.linux.tpl project.env
+	@rm project.env

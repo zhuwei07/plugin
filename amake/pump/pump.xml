@@ -1,0 +1,16 @@
+<tables is_primary_key=no>
+	<users command=user>
+		<fields>
+			<user_name type=character length=80/>
+			<password type=character length=80/>
+			<user_id type=int is_primary_key=yes/>
+			<group_id type=int/>
+		</fields>
+	</users>
+	<groups command=group>
+		<fields>
+			<item name=group_name type=character length=80>
+			<item name=group_id type=int is_primary_key=yes>
+		</fields>
+	</groups>
+</tables>

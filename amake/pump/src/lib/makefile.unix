@@ -1,0 +1,26 @@
+CC=g++
+
+all: pump.a
+
+pump.a: vector.o stack.o sgml.o pumpsys.o pump.o env.o
+	ar -r pump.a vector.o stack.o sgml.o pumpsys.o pump.o env.o
+	cp pump.a ../../lib
+
+vector.o: vector.cpp vector.h
+	$(CC) -c vector.cpp
+
+stack.o: stack.cpp stack.h vector.h
+	$(CC) -c stack.cpp
+
+sgml.o: sgml.cpp sgml.h vector.h pumpsys.h
+	$(CC) -c sgml.cpp
+
+pumpsys.o: pumpsys.cpp pumpsys.h
+	$(CC) -c pumpsys.cpp
+
+pump.o: pump.cpp pump.h env.h
+	$(CC) -c pump.cpp
+
+env.o: env.cpp env.h sgml.h stack.h
+	$(CC) -c env.cpp
+
