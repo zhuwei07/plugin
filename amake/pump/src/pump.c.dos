@@ -8,6 +8,8 @@
 #include <process.h>
 #include <io.h>
 
+#define MAXLINE 1024
+
 char *output_file="";
 
 void my_exit(int status)
@@ -24,13 +26,13 @@ void my_exit(int status)
 
 void run_command(char *format,...)
 {
-	static char buffer[200];
+	static char buffer[MAXLINE];
 	int result,status;
 	va_list v;
 	char *arg_list[MAX_ARG];
 	char *args[MAX_ARG];
 	int i;
-	static char command_buffer[200];
+	static char command_buffer[MAXLINE];
 	va_start(v,format);
 	vsprintf(buffer,format,v);
 	va_end(v);
@@ -59,7 +61,7 @@ void run_command(char *format,...)
 
 int main(int argc,char *argv[])
 {
-	char command_buffer[300];
+	char command_buffer[MAXLINE];
 	int i;
 
 	output_file=argv[1];
