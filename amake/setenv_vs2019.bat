@@ -1,0 +1,5 @@
+@echo off
+
+set INCLUDE=%~dp0\pump\include;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um;D:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.27.29110\include;%INCLUDE%
+set LIB=%~dp0\pump\lib;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um;D:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.27.29110\lib\x86;C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-arm64.microsoft.net.native.compiler\2.2.8-rel-28605-00\tools\arm64\ilc\tools\link;%LIB%
+set PATH=%~dp0\amake;%~dp0\pump\bin;D:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.27.29110\bin\Hostx86\x86;D:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Auxiliary\Build;D:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE;%PATH%
